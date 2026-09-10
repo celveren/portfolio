@@ -1,0 +1,13 @@
+# Only include files needed to build and serve the website.
+**
+!Dockerfile
+!package.json
+!package-lock.json
+!index.html
+!input.css
+!script.js
+!assets/
+!assets/**
+!previews/
+!previews/index.html
+**/.DS_Store

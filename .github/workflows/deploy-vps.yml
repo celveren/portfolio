@@ -1,0 +1,71 @@
+name: Deploy website to VPS
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  deployments: write
+
+concurrency:
+  group: production-vps
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    environment:
+      name: production
+      # This workflow creates and updates the deployment through the REST API.
+      deployment: false
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Create GitHub deployment
+        id: deployment
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DEPLOYMENT_URL: ${{ vars.DEPLOYMENT_URL }}
+        run: python3 scripts/github-deployment.py create
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '24'
+      - name: Install and build
+        run: |
+          npm ci
+          npm run build
+          mkdir -p dist/previews
+          cp index.html styles.css script.js dist/
+          cp -R assets dist/assets
+          cp previews/index.html dist/previews/index.html
+          find dist -name '.DS_Store' -delete
+      - name: Report deployment in progress
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DEPLOYMENT_ID: ${{ steps.deployment.outputs.deployment_id }}
+          DEPLOYMENT_URL: ${{ vars.DEPLOYMENT_URL }}
+        run: python3 scripts/github-deployment.py in_progress
+      - name: Upload and activate release
+        env:
+          VPS_HOST: ${{ vars.VPS_HOST }}
+          VPS_USER: ${{ vars.VPS_USER }}
+          VPS_PORT: ${{ vars.VPS_PORT || '22' }}
+          VPS_PATH: ${{ vars.VPS_PATH || '/var/www/celveren' }}
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+          VPS_KNOWN_HOSTS: ${{ secrets.VPS_KNOWN_HOSTS }}
+          RELEASE_ID: ${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
+        run: bash scripts/deploy-vps.sh
+      - name: Report deployment result
+        if: ${{ always() && steps.deployment.outputs.deployment_id != '' }}
+        timeout-minutes: 2
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DEPLOYMENT_ID: ${{ steps.deployment.outputs.deployment_id }}
+          DEPLOYMENT_URL: ${{ vars.DEPLOYMENT_URL }}
+          DEPLOYMENT_RESULT: ${{ job.status }}
+        run: python3 scripts/github-deployment.py finish

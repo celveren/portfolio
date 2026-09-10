@@ -1,0 +1,8 @@
+name: portfolio
+services:
+  website:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "127.0.0.1:${CELVEREN_PORT:-8080}:80"

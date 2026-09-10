@@ -1,0 +1,22 @@
+# Operating systems and editors
+.DS_Store
+._*
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*~
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+
+# Generated files and local dependencies
+*.log
+*.zip
+node_modules/
+__pycache__/
+.venv/
+dist/
+coverage/
