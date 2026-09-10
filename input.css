@@ -23,16 +23,17 @@ h3{@apply font-display text-3xl leading-tight font-medium}
 .hero-art{@apply absolute inset-0 -z-20 bg-cover bg-[position:61%_center] md:bg-[position:center_40%];background-image:url('assets/hero-reference.png')}
 .hero-shade{@apply absolute inset-0 -z-10;background:linear-gradient(90deg,#03090ee6,#07101b88 36%,transparent 65%),linear-gradient(0deg,#0a10188c,transparent 40%)}
 .hero-content{@apply pb-28 pt-[158px] md:pt-[140px] lg:pt-[147px] min-[1450px]:pt-[168px]}
-.hero-sparkle{position:relative;display:inline-block}
-.hero-sparkles{position:absolute;inset:0;pointer-events:none}
-.hero-sparkles span{position:absolute;left:var(--spark-x);top:var(--spark-y);width:var(--spark-size);height:var(--spark-size);opacity:0;filter:drop-shadow(0 0 5px #bce9ff);animation:hero-twinkle 4.8s ease-in-out infinite;animation-delay:var(--spark-delay)}
-.hero-sparkles span::before,.hero-sparkles span::after{content:"";position:absolute;inset:0;background:#effaff;clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%)}
-.hero-sparkles span::after{transform:scale(.5) rotate(45deg);opacity:.65}
-.hero-sparkles span:nth-child(1){--spark-x:5%;--spark-y:4%;--spark-size:.15em;--spark-delay:-.6s}
-.hero-sparkles span:nth-child(2){--spark-x:38%;--spark-y:98%;--spark-size:.1em;--spark-delay:-3s}
-.hero-sparkles span:nth-child(3){--spark-x:75%;--spark-y:-8%;--spark-size:.18em;--spark-delay:-1.8s}
-.hero-sparkles span:nth-child(4){--spark-x:100%;--spark-y:61%;--spark-size:.12em;--spark-delay:-4.1s}
-@keyframes hero-twinkle{0%,45%,100%{opacity:0;transform:scale(.35) rotate(-15deg)}15%,22%{opacity:.95;transform:scale(1) rotate(12deg)}35%{opacity:0;transform:scale(.5) rotate(30deg)}}
+/* Fallback positions when JavaScript is unavailable. */
+.art-sparkle{position:absolute;left:var(--spark-x);top:var(--spark-y);width:var(--spark-size);height:var(--spark-size);pointer-events:none;fill:#effaff;opacity:.4;transform:translate(-50%,-50%)}
+.art-sparkle:nth-child(1){--spark-x:43%;--spark-y:18%;--spark-size:9px;--spark-delay:-.8s;--spark-duration:7s}
+.art-sparkle:nth-child(2){--spark-x:86%;--spark-y:27%;--spark-size:13px;--spark-delay:-4.2s;--spark-duration:8.3s}
+.art-sparkle:nth-child(3){--spark-x:94%;--spark-y:61%;--spark-size:8px;--spark-delay:-2.6s;--spark-duration:6.7s}
+.art-sparkle:nth-child(4){--spark-x:71%;--spark-y:79%;--spark-size:11px;--spark-delay:-5.5s;--spark-duration:9.1s}
+.art-sparkle:nth-child(5){--spark-x:36%;--spark-y:68%;--spark-size:7px;--spark-delay:-1.9s;--spark-duration:7.6s}
+@media (prefers-reduced-motion:no-preference){
+.art-sparkle{animation:hero-twinkle var(--spark-duration) ease-in-out infinite;animation-delay:var(--spark-delay)}
+}
+@keyframes hero-twinkle{0%,45%,100%{opacity:.08}15%,22%{opacity:.8}35%{opacity:.2}}
 .eyebrow{@apply mb-5 text-xs tracking-[.35em] text-slate-300}
 .hero-description{@apply mb-8 max-w-lg text-base leading-relaxed text-slate-200 md:text-lg}
 .button{@apply inline-flex min-h-12 items-center justify-center gap-6 rounded-lg border px-6 py-3 text-sm font-medium transition-colors}

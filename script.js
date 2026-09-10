@@ -1,3 +1,13 @@
+// Scatter the artwork glints once per load; percentages adapt to resizing.
+// Give each one a vertical band so they don't all bunch together.
+const artSparkles = document.querySelectorAll('.hero-art .art-sparkle');
+artSparkles.forEach((sparkle, index) => {
+  const x = 35 + Math.random() * 60;
+  const y = 12 + ((index + Math.random()) / artSparkles.length) * 76;
+  sparkle.style.setProperty('--spark-x', `${x.toFixed(2)}%`);
+  sparkle.style.setProperty('--spark-y', `${y.toFixed(2)}%`);
+});
+
 const sayings = [
   "You know what, I am now French.",
   "Periodt",
