@@ -6,21 +6,22 @@
 <meta name="theme-color" content="#080d14">
 <meta name="description" content="Célveren’s projects: Lightning, a Discord moderation bot; Adamel, a vehicle maintenance log for Apple devices; and UDB-API, an API for Universal DB.">
 
-<title>Célveren</title>
-<link rel="icon" href="assets/celveren-favicon.png" type="image/png">
-<link rel="apple-touch-icon" href="assets/celveren-touch-icon.png">
-<link rel="stylesheet" href="styles.css">
+<title>Célveren — UDB-API previews</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="udb-previews.css">
+<link rel="icon" href="../assets/celveren-favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="../assets/celveren-touch-icon.png">
+<link rel="stylesheet" href="../styles.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&amp;family=Manrope:wght@400;500;600;700&amp;display=swap">
 </head>
 
-<body>
+<body data-card-style="soft"><aside class="udb-preview-bar" aria-label="Design preview controls"><div class="udb-controls"><span class="udb-preview-label">UDB-API previews</span><div class="udb-options" role="group" aria-label="Card style"><button type="button" data-card="soft" aria-pressed="true">01 · Soft panel</button><button type="button" data-card="split" aria-pressed="false">02 · Split card</button><button type="button" data-card="minimal" aria-pressed="false">03 · Minimal row</button></div><a href="tools-services.html">04 · Separate page ↗</a><a href="../index.html#projects">Current site ↗</a></div></aside><div class="udb-preview-site">
 <a class="skip" href="#projects">Skip to projects</a>
 <header class="header wrap">
-<a class="brand" href="index.html#home" aria-label="Célveren home">CÉLVEREN</a>
+<a class="brand" href="#home" aria-label="Célveren home">CÉLVEREN</a>
 <nav aria-label="Main navigation">
-<a href="index.html#home" aria-current="location">Home</a>
-<a href="index.html#projects">Projects</a>
-<a href="tools-services.html">Tools &amp; Services</a>
+<a href="#home" aria-current="location">Home</a>
+<a href="#projects">Projects</a>
 </nav>
 <div class="header-socials col-start-2 row-start-1 flex gap-2 justify-self-end md:col-start-3">
 <a class="nav-external github-link" aria-label="GitHub profile (opens in a new tab)" title="GitHub" href="https://github.com/celveren" target="_blank" rel="noopener noreferrer">
@@ -67,7 +68,7 @@
 </div>
 <div class="project-grid">
 <article class="project-card lightning">
-<div class="project-title"><img class="project-icon" src="assets/lightning.png" alt="" width="48" height="48"><div><h3>Lightning</h3><p class="project-category">Discord moderation bot</p></div></div>
+<div class="project-title"><img class="project-icon" src="../assets/lightning.png" alt="" width="48" height="48"><div><h3>Lightning</h3><p class="project-category">Discord moderation bot</p></div></div>
 <p class="project-description">Moderation tools for Discord servers, with configurable AutoMod and mod logs. No premium tier to unlock the features you need.</p>
 <ul class="project-features"><li>Customizable AutoMod</li><li>Flexible mod logs</li><li>No premium gates</li></ul>
 <div class="card-actions"><a class="project-primary" href="https://lightning.lightsage.dev/" target="_blank" rel="noopener noreferrer">Visit website <svg class="link-icon size-5 shrink-0" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -79,14 +80,36 @@
 </svg></a></div>
 </article>
 <article class="project-card adamel">
-<div class="project-title"><img class="project-icon" src="assets/adamel-icon.png" alt="" width="48" height="48"><div><h3>Adamel</h3><p class="project-category">Vehicle maintenance for Apple devices</p></div></div>
+<div class="project-title"><img class="project-icon" src="../assets/adamel-icon.png" alt="" width="48" height="48"><div><h3>Adamel</h3><p class="project-category">Vehicle maintenance for Apple devices</p></div></div>
 <p class="project-description">Keep maintenance records for each of your vehicles in one place, so you can look back at what was done and when.</p>
 <ul class="project-features"><li>Multiple vehicles</li><li>Detailed maintenance logs</li><li>Built for Apple devices</li></ul>
 <div class="card-actions"><span class="coming-soon">In development</span></div>
-<img class="project-screenshot" src="assets/adamel-summary.png" alt="Adamel vehicle summary screen" width="1206" height="2622">
+<img class="project-screenshot" src="../assets/adamel-summary.png" alt="Adamel vehicle summary screen" width="1206" height="2622">
 </article>
 </div>
-<div class="tools-back"><a href="tools-services.html">Explore Tools &amp; Services <span aria-hidden="true">→</span></a></div>
+<section class="tools-services" aria-labelledby="tools-services-title">
+<h3 id="tools-services-title" class="project-group-heading">Tools &amp; Services</h3>
+<div class="project-grid">
+<article class="project-card udb-api">
+<div class="project-title">
+<svg class="project-icon service-icon" viewBox="0 0 64 64" width="64" height="64" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<ellipse cx="32" cy="19" rx="16" ry="7"/>
+<path d="M16 19v13c0 4 7 7 16 7s16-3 16-7V19M16 32v13c0 4 7 7 16 7s16-3 16-7V32"/>
+</svg>
+<div><h4>UDB-API</h4><p class="project-category">An API for Universal DB</p></div>
+</div>
+<p class="project-description">Search Universal DB’s Nintendo DS and 3DS homebrew catalog through a typed API. Filter apps by system or discover something new with a random pick.</p>
+<ul class="project-features"><li>Fuzzy search</li><li>System filters</li><li>Random app discovery</li></ul>
+<div class="card-actions"><a class="project-primary" href="https://udb-api.lightsage.dev/docs" target="_blank" rel="noopener noreferrer">Read documentation <svg class="link-icon size-5 shrink-0" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<path d="M14 3h7v7m0-7L10 14"/>
+<path d="M10 3H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3v-4"/>
+</svg></a><a class="project-secondary" href="https://github.com/celveren/UDB-API" target="_blank" rel="noopener noreferrer">View source <svg class="link-icon size-5 shrink-0" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+<path d="M14 3h7v7m0-7L10 14"/>
+<path d="M10 3H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3v-4"/>
+</svg></a></div>
+</article>
+</div>
+</section>
 </div>
 </section>
 <section class="about scenic" id="about" aria-label="About Célveren">
@@ -98,7 +121,7 @@
 </div>
 <footer class="footer">
 <div class="wrap footer-inner">
-<a class="brand" href="index.html#home">CÉLVEREN</a>
+<a class="brand" href="#home">CÉLVEREN</a>
 <div class="footer-socials">
 <a class="github-link" aria-label="GitHub profile (opens in a new tab)" title="GitHub" href="https://github.com/celveren" target="_blank" rel="noopener noreferrer">
 <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
@@ -118,6 +141,6 @@
 </section>
 </main>
 
-<script src="script.js"></script>
-</body>
+<script src="../script.js"></script>
+</div><script src="udb-previews.js"></script></body>
 </html>

@@ -17,7 +17,7 @@ VPS_PATH=${VPS_PATH:-/var/www/celveren}
 [[ $VPS_PORT =~ ^[0-9]{1,5}$ ]] && (( 10#$VPS_PORT >= 1 && 10#$VPS_PORT <= 65535 )) || fail 'Invalid VPS_PORT.'
 [[ $VPS_PATH =~ ^/([a-zA-Z0-9_-]+/)*[a-zA-Z0-9_-]+$ ]] || fail 'VPS_PATH must be an absolute path with simple directory names.'
 [[ $RELEASE_ID =~ ^[a-f0-9]{40}-[0-9]+-[0-9]+$ ]] || fail 'Invalid RELEASE_ID.'
-for file in index.html styles.css script.js previews/index.html; do
+for file in index.html tools-services.html styles.css script.js previews/index.html; do
   [[ -s dist/$file ]] || fail "Missing or empty dist/$file"
 done
 [[ -d dist/assets ]] || fail 'Missing dist/assets.'
@@ -81,7 +81,7 @@ ssh -F "$ssh_dir/config" deploy-vps "bash -se -- '$VPS_PATH' '$RELEASE_ID'" <<'R
 set -euo pipefail
 base=$1
 release="$base/releases/$2"
-for file in index.html styles.css script.js previews/index.html; do
+for file in index.html tools-services.html styles.css script.js previews/index.html; do
   test -s "$release/$file"
 done
 test -d "$release/assets"

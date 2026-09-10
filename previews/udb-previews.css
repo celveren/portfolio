@@ -1,0 +1,58 @@
+/* Isolated presentation experiments; production styles remain unchanged. */
+.udb-preview-bar{position:sticky;top:0;z-index:100;background:#0a1018f5;border-bottom:1px solid #a6d8f533;color:#edf3f8;backdrop-filter:blur(16px)}
+.udb-controls{max-width:1440px;margin:auto;padding:12px 24px;display:flex;align-items:center;flex-wrap:wrap;gap:8px 24px;font-size:12px}
+.udb-preview-label{color:#a6d8f5;letter-spacing:.08em}
+.udb-options{display:flex;flex-wrap:wrap;gap:4px}
+.udb-options button{min-height:44px;padding:10px 16px;border:1px solid transparent;border-radius:24px;background:transparent;color:#bac8d3;cursor:pointer}
+.udb-options button[aria-pressed="true"]{background:#a6d8f5;color:#102330}
+.udb-controls a{display:inline-flex;align-items:center;min-height:44px}
+.udb-controls a:hover{text-decoration:underline;color:#a6d8f5}
+.udb-preview-site{position:relative}
+html{scroll-padding-top:var(--preview-offset,150px)}
+[data-card-style="split"] .udb-api{grid-template-columns:minmax(220px,.75fr) minmax(0,1.4fr);gap:20px 48px;padding:40px}
+[data-card-style="split"] .udb-api .project-title{grid-column:1;grid-row:1 / span 3;flex-direction:column;align-items:flex-start;border-right:1px solid var(--project-border);padding-right:32px;gap:24px}
+[data-card-style="split"] .udb-api .project-description,[data-card-style="split"] .udb-api .project-features,[data-card-style="split"] .udb-api .card-actions{grid-column:2}
+[data-card-style="split"] .udb-api .project-features{gap:10px}
+[data-card-style="split"] .udb-api .project-features li{padding:6px 12px;border:1px solid var(--project-border);border-radius:8px;background:var(--project-tint)}
+[data-card-style="split"] .udb-api .project-features li:before{content:none}
+[data-card-style="minimal"] .project-card.udb-api{grid-template-columns:minmax(210px,.7fr) minmax(0,1.5fr);border:0;border-top:1px solid var(--project-border);border-bottom:1px solid var(--project-border);border-radius:0;background:none;box-shadow:none;padding:32px 8px;gap:16px 40px}
+[data-card-style="minimal"] .udb-api .project-title{grid-row:1 / span 3;align-self:start;align-items:flex-start;flex-direction:column}
+[data-card-style="minimal"] .udb-api .project-description,[data-card-style="minimal"] .udb-api .project-features,[data-card-style="minimal"] .udb-api .card-actions{grid-column:2}
+[data-card-style="minimal"] .udb-api .service-icon{background:none;border:0;padding:4px;width:40px;height:40px;border-radius:0}
+[data-card-style="minimal"] .udb-api .project-primary{padding:8px 0;color:var(--project-accent);border:0;border-radius:0;background:none}
+[data-card-style="minimal"] .udb-api .project-primary:hover{text-decoration:underline}
+.tools-header{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-top:28px;padding-bottom:28px;font-size:14px}
+.tools-header nav{display:flex;flex-wrap:wrap;gap:24px}
+.tools-header nav a{display:flex;align-items:center;min-height:44px;border-bottom:2px solid transparent}
+.tools-header nav a[aria-current]{border-color:#a6d8f5;color:#a6d8f5}
+.tools-main{min-height:70vh;padding-top:72px}
+.tools-intro{max-width:720px}
+.tools-intro .eyebrow{color:var(--project-muted)}
+.tools-intro h1{font-size:clamp(56px,7vw,88px);color:var(--project-ink);margin-bottom:24px}
+.tools-intro>p:last-child{color:var(--project-muted);font-size:18px}
+.tools-page .tools-services{margin-top:48px}
+.tools-page .udb-api{padding:40px;grid-template-columns:minmax(0,1fr) auto;gap:20px 48px}
+.tools-page .udb-api h2{font-family:var(--font-display);font-size:48px;line-height:1.1;margin-bottom:5px}
+.tools-page .udb-api .card-actions{grid-column:2;grid-row:1 / span 3;flex-direction:column;align-items:stretch;justify-content:center}
+.service-details{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;margin-top:56px}
+.service-details>div{border-top:1px solid var(--project-muted);padding-top:20px}
+.service-number{font-size:12px;letter-spacing:.14em;color:var(--project-muted)}
+.service-details h3{margin:14px 0 12px}
+.service-details p{font-size:14px;line-height:1.8;color:var(--project-muted);max-width:340px}
+.tools-back{margin-top:56px;color:var(--project-muted)}
+.tools-back a{display:inline-flex;align-items:center;min-height:44px}
+.tools-back a:hover{text-decoration:underline}
+.tools-footer{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-top:32px;padding-bottom:32px}
+.tools-footer p{font-size:12px;color:#bac8d3}
+@media(prefers-color-scheme:light){.tools-intro h1 em{color:#245b7a}}
+@media(max-width:767px){
+ .udb-controls{padding:8px 16px;gap:4px 16px}.udb-preview-label{width:100%}.udb-options{width:100%}.udb-options button{padding:8px 12px}
+ [data-card-style="split"] .udb-api,[data-card-style="minimal"] .project-card.udb-api,.tools-page .udb-api{grid-template-columns:minmax(0,1fr);padding:24px;gap:20px}
+ [data-card-style="split"] .udb-api .project-title,[data-card-style="minimal"] .udb-api .project-title{grid-row:auto;flex-direction:row;border-right:0;padding-right:0;align-items:center}
+ [data-card-style] .udb-api .project-description,[data-card-style] .udb-api .project-features,[data-card-style] .udb-api .card-actions{grid-column:1}
+ [data-card-style="minimal"] .project-card.udb-api{padding:24px 0}
+ .tools-header{flex-wrap:wrap;gap:12px}.tools-header nav{order:3;width:100%;gap:20px;font-size:13px}
+ .tools-main{padding-top:48px}.tools-page .udb-api .card-actions{grid-column:1;grid-row:auto;align-items:flex-start}
+ .service-details{grid-template-columns:1fr;gap:28px;margin-top:40px}.service-details p{max-width:none}
+ .tools-footer{flex-wrap:wrap}
+}

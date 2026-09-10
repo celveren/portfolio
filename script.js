@@ -30,10 +30,13 @@ if (quote) {
 
 // Keep the navigation underline in sync with the selected section.
 function updateNavigation() {
-  const current = window.location.hash || "#home";
+  const current = new URL(window.location.href);
+  const currentPage = current.pathname.replace(/\/index\.html$/, '/');
   document.querySelectorAll('.header nav a').forEach(link => {
-    if (link.getAttribute('href') === current) {
-      link.setAttribute('aria-current', 'location');
+    const target = new URL(link.getAttribute('href'), current);
+    const targetPage = target.pathname.replace(/\/index\.html$/, '/');
+    if (targetPage === currentPage && (!target.hash || target.hash === (current.hash || '#home'))) {
+      link.setAttribute('aria-current', target.hash ? 'location' : 'page');
     } else {
       link.removeAttribute('aria-current');
     }

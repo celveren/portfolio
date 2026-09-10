@@ -40,7 +40,7 @@ jobs:
           npm ci
           npm run build
           mkdir -p dist/previews
-          cp index.html styles.css script.js dist/
+          cp index.html tools-services.html styles.css script.js dist/
           cp -R assets dist/assets
           cp previews/index.html dist/previews/index.html
           find dist -name '.DS_Store' -delete
