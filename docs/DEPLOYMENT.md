@@ -1,8 +1,8 @@
 # GitHub Actions → Nginx VPS
 
-The workflow builds on pushes to `main` and on manual runs from `main`. It uploads only the static site to a new release directory over SSH, then atomically changes `current`. Failed builds or uploads leave the active release untouched. No Node.js, Git checkout, Docker, sudo, or Nginx restart is needed during deployment.
+The workflow builds on pushes to `master` and on manual runs from `master`. It uploads only the static site to a new release directory over SSH, then atomically changes `current`. Failed builds or uploads leave the active release untouched. No Node.js, Git checkout, Docker, sudo, or Nginx restart is needed during deployment.
 
-Assumptions: a Linux VPS with Bash, GNU coreutils, rsync and OpenSSH; native Nginx serving static files; deployment branch `main`. The default base directory is `/var/www/celveren` and SSH port is `22`. Change the GitHub variables below for your server. If changing branch, update both the workflow trigger and job condition.
+Assumptions: a Linux VPS with Bash, GNU coreutils, rsync and OpenSSH; native Nginx serving static files; deployment branch `master`. The default base directory is `/var/www/celveren` and SSH port is `22`. Change the GitHub variables below for your server. If changing branch, update both the workflow trigger and job condition.
 
 The supplied `NGINX-VPS.md` (inspected 2026-09-10) identifies the existing static site as `lightsage.dev`, with root `/var/www/html`, worker user `nginx`, and enabled configuration `/etc/nginx/sites-available/default`. These details supersede the earlier `/var/http/` assumption. The deployment targets that static site; the proxy sites and certificates require no changes. The documented hostname `web` may be local-only: use an SSH hostname or IP reachable from GitHub for `VPS_HOST`.
 
@@ -61,7 +61,7 @@ Set that file's owner to `deploy-celveren:deploy-celveren` and mode to `0600`. `
 
 ## GitHub configuration
 
-Create a `production` environment under repository Settings → Environments. Restrict deployment branches to `main`, protect `main`, and require review for workflow/script changes. Environment protection availability depends on repository visibility and GitHub plan.
+Create a `production` environment under repository Settings → Environments. Restrict deployment branches to `master`, protect `master`, and require review for workflow/script changes. Environment protection availability depends on repository visibility and GitHub plan.
 
 Add these **environment variables**:
 
@@ -96,7 +96,7 @@ The workflow creates one production deployment for the exact commit SHA per run 
 
 The built-in `GITHUB_TOKEN` has `contents: read` and `deployments: write`; no personal access token or extra GitHub secret is needed. `environment.deployment: false` prevents a second, automatic deployment record while retaining environment secrets, branch restrictions, required reviewers, and wait timers. Custom GitHub App deployment protection rules are incompatible with this option; this workflow assumes none are configured.
 
-Deployment creation disables auto-merge and supplies `required_contexts: []`: it records the exact selected commit without waiting for separate commit status contexts. Protect `main` with your required checks before merging. Failed API creation or progress reporting stops the upload. Final reporting uses `always()` so ordinary failures and cancellations can be reported; runner loss, forced termination, timeouts, or an API outage can still leave a stale status. A final reporting failure fails the job but does not undo an already activated release. Deployment history records attempts, not a live health monitor; manual VPS rollback does not update GitHub automatically. Previous production records are retained without automatically marking them inactive.
+Deployment creation disables auto-merge and supplies `required_contexts: []`: it records the exact selected commit without waiting for separate commit status contexts. Protect `master` with your required checks before merging. Failed API creation or progress reporting stops the upload. Final reporting uses `always()` so ordinary failures and cancellations can be reported; runner loss, forced termination, timeouts, or an API outage can still leave a stale status. A final reporting failure fails the job but does not undo an already activated release. Deployment history records attempts, not a live health monitor; manual VPS rollback does not update GitHub automatically. Previous production records are retained without automatically marking them inactive.
 
 See [Deployment API](https://docs.github.com/en/rest/deployments/deployments), [deployment statuses](https://docs.github.com/en/rest/deployments/statuses), and [environments without automatic deployments](https://docs.github.com/en/actions/how-tos/deploy/configure-and-manage-deployments/control-deployments#using-environments-without-deployments).
 
@@ -104,7 +104,7 @@ See [Deployment API](https://docs.github.com/en/rest/deployments/deployments), [
 
 Releases live in `/var/www/celveren/releases/` and Nginx will serve `/var/www/celveren/current/`. This is a sibling of the existing `/var/www/html` root, so preparing the first release does not publish release history through the existing site. If you already set the GitHub `VPS_PATH` variable, update it to `/var/www/celveren`; an existing variable overrides the workflow default.
 
-Keep the existing site root while provisioning. Commit the workflow, script, and site build inputs (including `package.json` and `package-lock.json`), push to `main`, and confirm the deployment succeeds. This creates `/var/www/celveren/current` without modifying the existing web root.
+Keep the existing site root while provisioning. Commit the workflow, script, and site build inputs (including `package.json` and `package-lock.json`), push to `master`, and confirm the deployment succeeds. This creates `/var/www/celveren/current` without modifying the existing web root.
 
 After the first upload, confirm Nginx can read the release:
 
@@ -148,7 +148,7 @@ ln -s releases/REPLACE_WITH_KNOWN_GOOD_RELEASE current-rollback
 mv -Tf current-rollback current
 ```
 
-Verify the live site. The next deployment will publish again; revert the faulty source commit on `main` to make the correction persist.
+Verify the live site. The next deployment will publish again; revert the faulty source commit on `master` to make the correction persist.
 
 ## Security choices
 
