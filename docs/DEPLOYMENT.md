@@ -71,7 +71,7 @@ Add these **environment variables**:
 | `VPS_USER` | `deploy-celveren` |
 | `VPS_PORT` | SSH port; defaults to `22` |
 | `VPS_PATH` | Base directory; defaults to `/var/www/celveren`, not the `current` subdirectory |
-| `DEPLOYMENT_URL` | Set to `https://lightsage.dev` to link the site in GitHub's deployment history |
+| `DEPLOYMENT_URL` | Public deployment link; defaults to `https://celveren.dev` |
 
 Add these **environment secrets**:
 
@@ -91,6 +91,8 @@ For a custom port, use `[your-vps.example.com]:2222` as the first field. Do not 
 The VPS SSH port must be reachable from GitHub-hosted runners. If it is private or limited to fixed source IPs, arrange a private network connection or a runner with controlled egress; do not open SSH broadly just to make this workflow pass.
 
 ## GitHub Deployment API reporting
+
+The intended public deployment URL is `https://celveren.dev`. If the `production` environment or repository already defines `DEPLOYMENT_URL` as `https://lightsage.dev`, update that variable to `https://celveren.dev` (or remove it to use the workflow default). Environment variables take precedence over repository variables. Start a new deployment after changing it to publish the corrected link. This changes GitHub deployment metadata; it does not configure DNS, Nginx hostnames, or certificates. The Nginx cutover notes below describe the supplied historical `lightsage.dev` configuration; serving `celveren.dev` requires a matching Nginx virtual host and TLS certificate.
 
 The workflow creates one production deployment for the exact commit SHA per run attempt using GitHub's REST Deployment API. It reports `pending` while building, `in_progress` before SSH upload, and `success` only after the release activation command completes. Build/upload errors report `failure`; cancellation reports `error` because the API has no cancelled state. Statuses link to the exact Actions run attempt and optionally to `DEPLOYMENT_URL`.
 

@@ -3,7 +3,7 @@ const sayings = [
   "Periodt",
   "My superpower is getting people to laugh.",
   "I do have a pretty sunny disposition!",
-  "I still think about the people that said I had leader qualities. I keep proving that to myself every time!",
+  "I still think about the people that said I had leader qualities. I keep proving that to myself every time",
   "EXPERIENCE!!!!!",
   "People can surprise you, even I surprise myself.",
   "I'm bringing the cool stuff back. It's not my fault.",

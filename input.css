@@ -18,7 +18,7 @@ h3{@apply font-display text-3xl leading-tight font-medium}
 .header nav a{@apply relative inline-flex min-h-11 items-center border-b-2 border-transparent text-slate-100 hover:text-sky-200;text-shadow:0 1px 7px #0009}
 .header nav a[aria-current="location"]{@apply border-sky-300}
 .github-link{@apply inline-flex size-11 items-center justify-center rounded-full transition-colors hover:bg-white/15}
-.header-socials .github-link{@apply bg-slate-100/70 text-slate-950 hover:bg-white}
+.header-socials .github-link,.header-socials .kofi-link{@apply bg-slate-100/70 text-slate-950 hover:bg-white}
 .hero{@apply relative isolate min-h-[720px] overflow-hidden bg-slate-950 lg:min-h-[820px]}
 .hero-art{@apply absolute inset-0 -z-20 bg-cover bg-[position:61%_center] md:bg-[position:center_40%];background-image:url('assets/hero-reference.png')}
 .hero-shade{@apply absolute inset-0 -z-10;background:linear-gradient(90deg,#03090ee6,#07101b88 36%,transparent 65%),linear-gradient(0deg,#0a10188c,transparent 40%)}
@@ -99,8 +99,9 @@ cite{@apply mt-5 block font-sans text-xs tracking-[.25em] text-slate-300 not-ita
 .scenic> .wrap{@apply pb-12}
 .footer-inner{@apply flex flex-wrap items-center gap-x-6 gap-y-3 py-6}
 .footer .brand{@apply text-xl}
-.footer-inner>span{@apply text-xs text-slate-300}
-.footer nav{@apply flex w-full items-center gap-6 text-sm md:ml-auto md:w-auto}
+.footer-socials{@apply ml-auto flex items-center gap-2}
+.kofi-link{@apply inline-flex size-11 items-center justify-center rounded-full text-white transition-colors hover:bg-white/15}
+.kofi-link svg{@apply shrink-0}
 .skip{@apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-sky-100 focus:p-4 focus:text-slate-950}
 .desktop-break{@apply hidden md:block}
 }

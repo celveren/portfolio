@@ -30,7 +30,7 @@ jobs:
         id: deployment
         env:
           GH_TOKEN: ${{ github.token }}
-          DEPLOYMENT_URL: ${{ vars.DEPLOYMENT_URL }}
+          DEPLOYMENT_URL: ${{ vars.DEPLOYMENT_URL || 'https://celveren.dev' }}
         run: python3 scripts/github-deployment.py create
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
@@ -48,7 +48,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           DEPLOYMENT_ID: ${{ steps.deployment.outputs.deployment_id }}
-          DEPLOYMENT_URL: ${{ vars.DEPLOYMENT_URL }}
+          DEPLOYMENT_URL: ${{ vars.DEPLOYMENT_URL || 'https://celveren.dev' }}
         run: python3 scripts/github-deployment.py in_progress
       - name: Upload and activate release
         env:
@@ -66,6 +66,6 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           DEPLOYMENT_ID: ${{ steps.deployment.outputs.deployment_id }}
-          DEPLOYMENT_URL: ${{ vars.DEPLOYMENT_URL }}
+          DEPLOYMENT_URL: ${{ vars.DEPLOYMENT_URL || 'https://celveren.dev' }}
           DEPLOYMENT_RESULT: ${{ job.status }}
         run: python3 scripts/github-deployment.py finish
