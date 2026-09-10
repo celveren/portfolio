@@ -60,6 +60,14 @@ jobs:
           VPS_KNOWN_HOSTS: ${{ secrets.VPS_KNOWN_HOSTS }}
           RELEASE_ID: ${{ github.sha }}-${{ github.run_id }}-${{ github.run_attempt }}
         run: bash scripts/deploy-vps.sh
+      - name: Refresh Cloudflare cache
+        id: cache
+        continue-on-error: true
+        timeout-minutes: 2
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ZONE_ID: ${{ vars.CLOUDFLARE_ZONE_ID }}
+        run: python3 scripts/purge-cloudflare.py
       - name: Report deployment result
         if: ${{ always() && steps.deployment.outputs.deployment_id != '' }}
         timeout-minutes: 2
@@ -68,4 +76,5 @@ jobs:
           DEPLOYMENT_ID: ${{ steps.deployment.outputs.deployment_id }}
           DEPLOYMENT_URL: ${{ vars.DEPLOYMENT_URL || 'https://celveren.dev' }}
           DEPLOYMENT_RESULT: ${{ job.status }}
+          CACHE_RESULT: ${{ steps.cache.outcome }}
         run: python3 scripts/github-deployment.py finish

@@ -92,6 +92,23 @@ The VPS SSH port must be reachable from GitHub-hosted runners. If it is private 
 
 ## GitHub Deployment API reporting
 
+### Cloudflare cache refresh
+
+After a successful VPS upload and activation, the workflow purges cached content for **`celveren.dev` only** using Cloudflare's hostname purge API. It does not purge other hostnames in the zone. Cacheable files refill as requests arrive; this does not prewarm all edge locations or clear browser caches.
+
+In GitHub's `production` environment, add:
+
+| Type | Name | Value |
+| --- | --- | --- |
+| Secret | `CLOUDFLARE_API_TOKEN` | Cloudflare API token with **Zone → Cache Purge → Purge**, limited to the `celveren.dev` zone |
+| Variable | `CLOUDFLARE_ZONE_ID` | The zone ID from the Cloudflare overview for `celveren.dev` |
+
+The token is used only in the runner's purge step; no VPS permission changes or sudo are needed. The script retries network errors, HTTP 429 and HTTP 5xx up to three attempts. Missing configuration, rejected credentials and exhausted retries produce a cache warning.
+
+If the purge fails, the new VPS release stays active, the GitHub deployment status remains **success**, and its description reads **“Deployment successful; failed to refresh Cloudflare cache”**. A warning annotation and run summary also show the failure. The purge step uses `continue-on-error`, while final reporting reads its original `outcome` so the warning is not lost. Build/upload failures still fail deployment and skip purging. This does not add automatic rollback or live-site verification.
+
+To recover, fix any credential issue and manually purge hostname `celveren.dev` in Cloudflare, or run a new deployment. See [Cloudflare hostname purge](https://developers.cloudflare.com/cache/how-to/purge-cache/purge-by-hostname/) and the [purge API](https://developers.cloudflare.com/api/resources/cache/methods/purge/).
+
 The intended public deployment URL is `https://celveren.dev`. If the `production` environment or repository already defines `DEPLOYMENT_URL` as `https://lightsage.dev`, update that variable to `https://celveren.dev` (or remove it to use the workflow default). Environment variables take precedence over repository variables. Start a new deployment after changing it to publish the corrected link. This changes GitHub deployment metadata; it does not configure DNS, Nginx hostnames, or certificates. The Nginx cutover notes below describe the supplied historical `lightsage.dev` configuration; serving `celveren.dev` requires a matching Nginx virtual host and TLS certificate.
 
 The workflow creates one production deployment for the exact commit SHA per run attempt using GitHub's REST Deployment API. It reports `pending` while building, `in_progress` before SSH upload, and `success` only after the release activation command completes. Build/upload errors report `failure`; cancellation reports `error` because the API has no cancelled state. Statuses link to the exact Actions run attempt and optionally to `DEPLOYMENT_URL`.

@@ -76,6 +76,25 @@ class DeploymentReportingTests(unittest.TestCase):
                 self.assertEqual(post.call_args.args[1]["state"], expected)
 
     @patch.object(deployment, "post")
+    def test_cache_failure_preserves_deployment_success(self, post):
+        os.environ["DEPLOYMENT_RESULT"] = "success"
+        os.environ["CACHE_RESULT"] = "failure"
+        summary = Path(self.temp.name) / "summary"
+        os.environ["GITHUB_STEP_SUMMARY"] = str(summary)
+        deployment.main("finish")
+        payload = post.call_args.args[1]
+        self.assertEqual(payload["state"], "success")
+        self.assertIn("failed to refresh Cloudflare cache", payload["description"])
+        self.assertIn(payload["description"], summary.read_text())
+
+    @patch.object(deployment, "post")
+    def test_cache_does_not_mask_deployment_failure(self, post):
+        os.environ["DEPLOYMENT_RESULT"] = "failure"
+        os.environ["CACHE_RESULT"] = "skipped"
+        deployment.main("finish")
+        self.assertEqual(post.call_args.args[1]["state"], "failure")
+
+    @patch.object(deployment, "post")
     def test_invalid_id_never_calls_api(self, post):
         os.environ["DEPLOYMENT_ID"] = "invalid/42"
         with self.assertRaises(ValueError):

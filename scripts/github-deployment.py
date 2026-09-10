@@ -77,6 +77,16 @@ def main(command):
             # The Deployment API has no cancelled state.
             "cancelled": ("error", "Run cancelled; verify the active VPS release"),
         }[os.environ["DEPLOYMENT_RESULT"]]
+        if state == "success":
+            cache_result = os.environ.get("CACHE_RESULT")
+            if cache_result == "success":
+                description = "Deployment successful; Cloudflare cache purged"
+            elif cache_result:
+                description = "Deployment successful; failed to refresh Cloudflare cache"
+                print(f"::warning title=Cache refresh failed::{description}. The new release remains active.")
+            if os.environ.get("GITHUB_STEP_SUMMARY"):
+                with open(os.environ["GITHUB_STEP_SUMMARY"], "a", encoding="utf-8") as summary:
+                    summary.write(f"## Deployment result\n\n{description}.\n")
         status(os.environ["DEPLOYMENT_ID"], state, description)
     else:
         raise ValueError("Use create, in_progress, or finish")
