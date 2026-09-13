@@ -6,3 +6,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - "127.0.0.1:${CELVEREN_PORT:-8080}:80"
+    develop:
+      watch:
+        # Rebuild Tailwind and the site together; .dockerignore filters this path.
+        - action: rebuild
+          path: .

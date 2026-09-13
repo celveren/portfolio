@@ -37,6 +37,16 @@ Open [localhost:8080](http://localhost:8080). Run the same command after edits t
 
 If port 8080 is busy, use `CELVEREN_PORT=8081 docker compose up --build -d`.
 
+To automatically rebuild and restart the site as you edit, use [Compose Watch](https://docs.docker.com/compose/how-tos/file-watch/) (Docker Compose 2.22.0 or later):
+
+```sh
+docker compose up --build --watch
+```
+
+Keep this command running while editing, then refresh your browser after each rebuild. Watch monitors the build context using `.dockerignore`, so changes to site sources, assets, dependencies, or the Dockerfile rebuild the image and regenerate its stylesheet. Local `styles.css`, `node_modules`, and unrelated files are excluded. No local Node.js installation is needed.
+
+Press Ctrl+C to stop, then run `docker compose down` to remove the containers. To use a different port, run `CELVEREN_PORT=8081 docker compose up --build --watch`.
+
 ## Maintenance notes
 
 Before publishing, check mobile and desktop layouts, links, images, keyboard navigation, and reduced-motion behavior.
