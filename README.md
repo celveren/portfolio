@@ -51,6 +51,8 @@ Press Ctrl+C to stop, then run `docker compose down` to remove the containers. T
 
 Before publishing, check mobile and desktop layouts, links, images, keyboard navigation, and reduced-motion behavior.
 
-Server setup and automatic deployment are documented in [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md). For a manual upload, include `index.html`, `tools-services.html`, `styles.css`, `script.js`, and `assets/`.
+Server setup and automatic deployment are documented in [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md). For a manual upload, include `index.html`, `tools-services.html`, `404.html`, `styles.css`, `script.js`, `daily-artwork.js`, and `assets/`.
 
 Artwork sources and usage notes are in [docs/ASSETS.md](docs/ASSETS.md). No open-source license is currently assigned to this repository.
+
+Preview the custom missing page at `/404.html`. Python’s basic server does not use custom error pages; use Docker to check actual missing-URL routing.

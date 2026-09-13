@@ -140,11 +140,12 @@ sudo cp -a --backup=numbered /etc/nginx/sites-available/default /root/celveren-n
 sudoedit /etc/nginx/sites-available/default
 ```
 
-In the HTTPS server block for `lightsage.dev`, replace `root /var/www/html;` with the following. Keep `index index.html;` and the existing missing-file/404 behavior:
+In the HTTPS server block for `lightsage.dev`, replace `root /var/www/html;` with the following. Keep `index index.html;` and configure the custom missing-page response:
 
 ```nginx
 root /var/www/celveren/current;
 index index.html;
+error_page 404 /404.html;
 ```
 
 Nginx must serve `current`, not the deployment base directory, which contains release history. Preserve the TLS directives, default rejection server and other sites. Editing `/home/frost/default` or `/etc/nginx/conf.d/default.conf` would have no effect according to the supplied notes. Ensure any `disable_symlinks` policy permits this release symlink. If `open_file_cache` is enabled, disable it for this site or account for delayed visibility after deployment.
@@ -176,3 +177,5 @@ The workflow uses a GitHub token limited to reading contents and writing deploym
 For tighter isolation, a server-side pull service can fetch approved artifacts using an outbound connection, eliminating GitHub-held inbound SSH credentials. Short-lived SSH certificates are another option if you already operate an identity broker. For this static site, a dedicated unprivileged account is a practical starting point; a root-owned forced-command receiver can further limit it but must be designed to support both upload and activation.
 
 References: [GitHub secure use guidance](https://docs.github.com/en/actions/reference/security/secure-use), [deployment environments](https://docs.github.com/en/actions/reference/workflows-and-actions/deployments-and-environments), and [OpenSSH authorized_keys options](https://man.openbsd.org/sshd.8).
+
+The custom error page preserves HTTP status 404. Add `error_page 404 /404.html;` to an existing VPS server block and reload Nginx once after `nginx -t`. Verify a nested missing URL returns 404 and shows the styled page. Docker includes this configuration automatically.

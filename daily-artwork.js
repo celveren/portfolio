@@ -1,6 +1,7 @@
 // Pick a matching scene for the visitor's local calendar day. Hashing the date
 // keeps refreshes and page navigation consistent without cookies or storage.
 (() => {
+  const assetBase = new URL(".", document.currentScript.src);
   const scenes = [
     ['assets/hero-reference.png', 'assets/footer-reference.png'],
     ['assets/stellar-blade-hero.png', 'assets/stellar-blade-landscape.png'],
@@ -18,8 +19,8 @@
     hash = Math.imul(hash, 0x45d9f3b);
     hash ^= hash >>> 16;
     const [hero, landscape] = scenes[(hash >>> 0) % scenes.length];
-    document.documentElement.style.setProperty('--daily-hero', `url("${hero}")`);
-    document.documentElement.style.setProperty('--daily-landscape', `url("${landscape}")`);
+    document.documentElement.style.setProperty('--daily-hero', `url("${new URL(hero, assetBase).href}")`);
+    document.documentElement.style.setProperty('--daily-landscape', `url("${new URL(landscape, assetBase).href}")`);
 
     // Refresh even when a visitor leaves the page open overnight.
     const midnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
