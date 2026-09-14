@@ -5,6 +5,7 @@
   const scenes = [
     ['assets/hero-reference.png', 'assets/footer-reference.png'],
     ['assets/stellar-blade-hero.png', 'assets/stellar-blade-landscape.png'],
+    ['assets/fall-white-protag.png', 'assets/fall-landscape.png'],
   ];
 
   function updateArtwork() {
