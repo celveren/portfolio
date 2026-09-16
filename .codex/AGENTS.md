@@ -19,3 +19,11 @@ For example,
 
 <p>Hello World</p>
 ```
+
+## Guides
+
+To help formulate messages that stay consistent with the brand, use `BRAND.md`. `README.md` also contains additional information in styling.
+
+When in doubt of new changes that stray outside of the brand (BRAND.md), ask before executing an action that may be harmful to the brand.
+
+When making changes to the footer or the navigation, be sure to update the corresponding item through all the .html pages that are served.
