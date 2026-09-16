@@ -19,7 +19,7 @@ h3{@apply font-display text-3xl leading-tight font-medium}
 .header nav{@apply col-span-2 row-start-2 flex items-center justify-center gap-4 text-xs min-[400px]:gap-7 min-[400px]:text-sm md:col-span-1 md:col-start-2 md:row-start-1 lg:gap-10 lg:text-base}
 .header nav a{@apply relative inline-flex min-h-11 items-center border-b-2 border-transparent text-slate-100 hover:text-sky-200;text-shadow:0 1px 7px #0009}
 .header nav a[aria-current]{@apply border-sky-300}
-.github-link{@apply inline-flex size-11 items-center justify-center rounded-full transition-colors hover:bg-white/15}
+.github-link,.source-link{@apply inline-flex size-11 items-center justify-center rounded-full transition-colors hover:bg-white/15}
 .header-socials .github-link,.header-socials .kofi-link{@apply bg-slate-100/70 text-slate-950 hover:bg-white}
 .hero{@apply relative isolate min-h-[720px] overflow-hidden bg-slate-950 lg:min-h-[820px]}
 .hero-art{@apply absolute inset-0 -z-20 bg-cover bg-[position:61%_center] md:bg-[position:center_40%];background-image:var(--daily-hero, url('assets/hero-reference.png'))}
