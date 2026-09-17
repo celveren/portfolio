@@ -1,0 +1,91 @@
+@font-face {
+    font-family: "Phosphor";
+    src: url("Phosphor.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+.ph, .ph-light, .ph-duotone {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: "Phosphor" !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+  
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.ph.ph-caret-left:before {
+    content: "\e138";
+}
+.ph.ph-caret-right:before {
+    content: "\e13a";
+}
+.ph.ph-code:before {
+    content: "\e1bc";
+}
+.ph.ph-hand-heart:before {
+    content: "\e810";
+}
+.ph.ph-tip-jar:before {
+    content: "\e7e2";
+}
+.ph.ph-arrow-square-out:before {
+    content: "\e5de";
+}
+.ph.ph-arrow-up-right:before {
+    content: "\e092";
+}
+.ph.ph-database:before {
+    content: "\e1de";
+}
+.ph.ph-sparkle:before {
+    content: "\e6a2";
+}
+.ph.ph-arrow-left:before {
+    content: "\e058";
+}
+.ph-light.ph-caret-right:before {
+    content: "\e000";
+}
+.ph-light.ph-caret-left:before {
+    content: "\e001";
+}
+.ph-light.ph-code:before {
+    content: "\e002";
+}
+.ph-light.ph-hand-heart:before {
+    content: "\e003";
+}
+.ph-light.ph-tip-jar:before {
+    content: "\e004";
+}
+.ph-light.ph-arrow-square-out:before {
+    content: "\e005";
+}
+.ph-light.ph-arrow-up-right:before {
+    content: "\e006";
+}
+.ph-light.ph-database:before {
+    content: "\e007";
+}
+.ph-light.ph-sparkle:before {
+    content: "\e008";
+}
+.ph-light.ph-arrow-left:before {
+    content: "\e009";
+}
+.ph-duotone.ph-hand-heart:before {
+    content: "\e00a";
+    opacity: 0.2;
+}
+.ph-duotone.ph-hand-heart:after {
+    content: "\e811";
+    margin-left: -1em;
+}

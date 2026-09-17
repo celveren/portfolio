@@ -12,6 +12,10 @@ Célveren uses Cormorant Garamond for its main logo/typography. It's meant to be
 
 Manrope is the font used for informational text, like the body of the text.
 
+### Icons
+
+Célveren uses Phosphor (Regular) icons that represents the brand's need to feel sleek, elegant, and refined, communicating confidence while remaining relaxed, friendly, future oriented, and accessible.
+
 ### Visual Direction
 
 Célveren's theme is elegant, refined, with a use of space and futuristic elements. While other products under the Célveren brand can use a hyper cyberpunk theme, it should always stay within the fines of being elegant, future oriented, and accessible.
