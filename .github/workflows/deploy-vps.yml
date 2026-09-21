@@ -42,6 +42,7 @@ jobs:
           mkdir -p dist/previews
           cp index.html tools-services.html 404.html styles.css script.js daily-artwork.js dist/
           cp -R assets dist/assets
+          cp -R migration dist/migration
           cp previews/index.html dist/previews/index.html
           find dist -name '.DS_Store' -delete
       - name: Report deployment in progress

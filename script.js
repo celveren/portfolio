@@ -44,3 +44,25 @@ function updateNavigation() {
 }
 window.addEventListener('hashchange', updateNavigation);
 updateNavigation();
+
+// Old links can opt into the announcement; dismissal wins on later visits.
+const rebrandBanner = document.getElementById('rebrand-banner');
+const rebrandDismissalKey = 'celveren-rebrand-dismissed-v1';
+let rebrandDismissed = false;
+try {
+    rebrandDismissed = localStorage.getItem(rebrandDismissalKey) === 'true';
+} catch {
+    // The banner still works when browser storage is unavailable.
+}
+if (rebrandBanner && new URLSearchParams(window.location.search).get('from') === 'lightsage' && !rebrandDismissed) {
+    rebrandBanner.hidden = false;
+}
+document.getElementById('dismiss-rebrand')?.addEventListener('click', () => {
+    rebrandBanner.hidden = true;
+    try {
+        localStorage.setItem(rebrandDismissalKey, 'true');
+    } catch {
+        // Without storage, dismissal lasts for this page view.
+    }
+    document.querySelector('.site-shell header .brand')?.focus();
+});

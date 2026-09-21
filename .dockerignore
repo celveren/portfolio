@@ -6,6 +6,12 @@
 !index.html
 !tools-services.html
 !404.html
+!migration/
+!migration/**
+!partials/
+!partials/header.html
+!scripts/
+!scripts/build-html.mjs
 !input.css
 !script.js
 !daily-artwork.js

@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#080d14">
+    <meta name="description" content="Moving from LightSage to Célveren? Update your product links from lightsage.dev to celveren.dev with this quick guide.">
+    <title>Moving to Célveren — Migration guide</title>
+    <link rel="icon" href="/assets/celveren-favicon.png" type="image/png">
+    <link rel="apple-touch-icon" href="/assets/celveren-touch-icon.png">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/assets/phosphor-icons/Phosphor.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&amp;family=Manrope:wght@400;500;600;700&amp;display=swap">
+
+  </head>
+
+  <body class="migration-page">
+
+    <a class="skip" href="#guide">Skip to migration guide</a>
+    <aside class="rebrand-banner" id="rebrand-banner" aria-label="Name change announcement" hidden>
+      <div class="wrap rebrand-banner-inner">
+        <p>🎉 LightSage is now Célveren. Welcome to the new era! <a href="/migration/">Migration guide</a></p>
+        <button type="button" id="dismiss-rebrand" aria-label="Dismiss name change announcement">×</button>
+      </div>
+    </aside>
+    <div class="site-shell">
+      <div class="tools-header-shell">
+        <!-- shared:header:start -->
+        <header class="header wrap">
+          <a class="brand" href="/index.html#home" aria-label="Célveren home">CÉLVEREN</a>
+          <nav aria-label="Main navigation">
+            <a href="/index.html#home">Home</a>
+            <a href="/index.html#projects">Projects</a>
+            <a href="/tools-services.html">Tools &amp; Services</a>
+          </nav>
+          <div class="header-socials col-start-2 row-start-1 flex gap-2 justify-self-end md:col-start-3">
+            <a class="nav-external github-link" aria-label="GitHub profile (opens in a new tab)" title="GitHub" href="https://github.com/celveren" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+                <path d="M12 .75a11.25 11.25 0 0 0-3.558 21.923c.563.104.769-.244.769-.542 0-.267-.01-.975-.015-1.913-3.13.68-3.791-1.508-3.791-1.508-.512-1.3-1.25-1.646-1.25-1.646-1.022-.698.077-.684.077-.684 1.13.08 1.724 1.16 1.724 1.16 1.004 1.72 2.634 1.223 3.275.935.102-.727.393-1.223.715-1.505-2.498-.284-5.124-1.25-5.124-5.565 0-1.23.44-2.234 1.16-3.022-.117-.285-.503-1.431.11-2.982 0 0 .945-.303 3.095 1.155a10.79 10.79 0 0 1 5.634 0c2.149-1.458 3.092-1.155 3.092-1.155.615 1.551.229 2.697.112 2.982.722.788 1.159 1.792 1.159 3.022 0 4.326-2.63 5.278-5.136 5.557.404.348.765 1.034.765 2.084 0 1.504-.014 2.718-.014 3.087 0 .3.203.652.774.541A11.252 11.252 0 0 0 12 .75Z"/>
+              </svg>
+            </a>
+            <a class="kofi-link" title="Ko-fi" href="https://ko-fi.com/celveren" target="_blank" rel="noopener noreferrer" aria-label="Support me on Ko-fi (opens in a new tab)">
+              <svg viewBox="0 0 32 24" width="28" height="24" fill="none" aria-hidden="true">
+                <path d="M23 5h3a5 5 0 0 1 0 10h-3" stroke="currentColor" stroke-width="3"/>
+                <path d="M3 4h21v11a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6V4Z" fill="currentColor"/>
+                <path d="M13.5 16s-6-3.5-6-6.5a3.25 3.25 0 0 1 6-1.5 3.25 3.25 0 0 1 6 1.5c0 3-6 6.5-6 6.5Z" fill="#ff5e5b"/>
+              </svg>
+            </a>
+          </div>
+        </header>
+        <!-- shared:header:end -->
+      </div>
+      <main class="guide wrap" id="guide">
+        <p class="eyebrow">LIGHTSAGE <i class="ph ph-caret-right icon-16" aria-hidden="true"></i><span class="sr-only"> to </span> CÉLVEREN</p>
+        <h1>New name.<br><em>New address.</em></h1>
+        <p class="guide-intro">LightSage is now Célveren. If you use a product at <strong>lightsage.dev</strong>, update its web address to use <strong>celveren.dev</strong>.</p>
+        <section aria-labelledby="address-title">
+          <h2 id="address-title">Change the domain. Keep the rest.</h2>
+          <p>Replace <strong>lightsage.dev</strong> in the website’s domain with <strong>celveren.dev</strong>. Keep <strong>https://</strong>, any product name before the domain, and everything after the domain exactly as they are.</p>
+          <div class="address-examples" role="region" aria-label="Old and new website addresses" tabindex="0">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Old address</th>
+                  <th scope="col">New address</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>lightsage.dev</td>
+                  <td>
+                    <a href="https://celveren.dev/">celveren.dev</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>lightning.lightsage.dev</td>
+                  <td>
+                    <a href="https://lightningbot.app/">lightningbot.app</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td>udb-api.lightsage.dev</td>
+                  <td>
+                    <a href="https://udb-api.celveren.dev/">udb-api.celveren.dev</a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="guide-note"><strong>Lightning is an exception:</strong> <code>lightning.lightsage.dev</code> now lives at <strong>lightningbot.app</strong>. Use the link above to visit its new home.</p>
+          <p class="guide-note">For example, <code>https://product.lightsage.dev/settings</code> becomes <code>https://product.celveren.dev/settings</code>. This example shows the address format; use your product’s actual name and page.</p>
+        </section>
+        <section aria-labelledby="checklist-title">
+          <h2 id="checklist-title">Your quick checklist</h2>
+          <ol class="guide-steps">
+            <li><strong>Open the updated address.</strong> Change the domain in your browser’s address bar and visit the page.</li>
+            <li><strong>Update saved links.</strong> Replace old bookmarks, favorites, and shortcuts with the new address.</li>
+            <li><strong>Use the new address when sharing.</strong> Update links you’ve saved in messages, documents, or your own website.</li>
+          </ol>
+        </section>
+        <section aria-labelledby="help-title">
+          <h2 id="help-title">Having trouble opening a page?</h2>
+          <p>Check that the new domain is spelled <strong>celveren.dev</strong> (without an accent), and that you kept the product name and the rest of the address. If a saved page won’t load, try the product’s home page on the new domain and navigate from there.</p>
+          <a class="button primary" href="/">Explore Célveren’s projects <i class="link-icon size-5 shrink-0 ph ph-caret-right icon-20" aria-hidden="true"></i></a>
+        </section>
+      </main>
+      <footer class="footer">
+        <div class="wrap footer-inner">
+          <a class="brand" href="/index.html#home">CÉLVEREN</a>
+          <a class="migration-link" href="/migration/" aria-current="page">Migration guide</a>
+          <div class="footer-socials">
+            <a class="source-link" href="https://github.com/celveren/portfolio" target="_blank" rel="noopener noreferrer" title="Source" aria-label="Source code (opens in a new tab)">
+              <i class="ph ph-code icon-22" aria-hidden="true"></i>
+            </a>
+            <a class="github-link" aria-label="GitHub profile (opens in a new tab)" title="GitHub" href="https://github.com/celveren" target="_blank" rel="noopener noreferrer">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true">
+                <path d="M12 .75a11.25 11.25 0 0 0-3.558 21.923c.563.104.769-.244.769-.542 0-.267-.01-.975-.015-1.913-3.13.68-3.791-1.508-3.791-1.508-.512-1.3-1.25-1.646-1.25-1.646-1.022-.698.077-.684.077-.684 1.13.08 1.724 1.16 1.724 1.16 1.004 1.72 2.634 1.223 3.275.935.102-.727.393-1.223.715-1.505-2.498-.284-5.124-1.25-5.124-5.565 0-1.23.44-2.234 1.16-3.022-.117-.285-.503-1.431.11-2.982 0 0 .945-.303 3.095 1.155a10.79 10.79 0 0 1 5.634 0c2.149-1.458 3.092-1.155 3.092-1.155.615 1.551.229 2.697.112 2.982.722.788 1.159 1.792 1.159 3.022 0 4.326-2.63 5.278-5.136 5.557.404.348.765 1.034.765 2.084 0 1.504-.014 2.718-.014 3.087 0 .3.203.652.774.541A11.252 11.252 0 0 0 12 .75Z"/>
+              </svg>
+            </a>
+            <a class="kofi-link" title="Ko-fi" href="https://ko-fi.com/celveren" target="_blank" rel="noopener noreferrer" aria-label="Support me on Ko-fi (opens in a new tab)">
+              <svg viewBox="0 0 32 24" width="28" height="24" fill="none" aria-hidden="true">
+                <path d="M23 5h3a5 5 0 0 1 0 10h-3" stroke="currentColor" stroke-width="3"/>
+                <path d="M3 4h21v11a6 6 0 0 1-6 6H9a6 6 0 0 1-6-6V4Z" fill="currentColor"/>
+                <path d="M13.5 16s-6-3.5-6-6.5a3.25 3.25 0 0 1 6-1.5 3.25 3.25 0 0 1 6 1.5c0 3-6 6.5-6 6.5Z" fill="#ff5e5b"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="/script.js"></script>
+
+  </body>
+
+</html>

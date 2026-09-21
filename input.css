@@ -1,5 +1,6 @@
 @import "tailwindcss" source(none);
 @source "./index.html";
+@source "./migration/index.html";
 @source "./404.html";
 @source "./tools-services.html";
 @theme{--font-sans:"Manrope",Arial,sans-serif;--font-display:"Cormorant Garamond",Georgia,serif;}
@@ -136,6 +137,7 @@ cite{@apply mt-5 block font-sans text-xs tracking-[.25em] text-slate-300 not-ita
 .footer{@apply mt-auto w-full border-t border-white/15 bg-slate-950/50 shadow-[0_-8px_30px_rgba(0,0,0,0.12)] backdrop-blur-md}
 .scenic> .wrap{@apply pb-12}
 .footer-inner{@apply flex flex-wrap items-center gap-x-6 gap-y-3 py-6}
+.footer .migration-link{font-size:12px}
 .footer .brand{@apply text-xl}
 .footer-socials{@apply ml-auto flex items-center gap-2}
 .kofi-link{@apply inline-flex size-11 items-center justify-center rounded-full text-white transition-colors hover:bg-white/15}
@@ -210,3 +212,49 @@ background:radial-gradient(ellipse at 0 0,var(--project-tint),transparent 70%),l
 .card-actions .ph.link-icon,#page-preview-cards .cp-actions .ph.link-icon{width:18px;height:18px;font-size:18px}
 .ph.service-icon{font-size:42px}
 @media(max-width:767px){.ph.service-icon{font-size:30px}}
+
+/* The announcement takes its own row above the positioned home header. */
+.site-shell{position:relative}
+.rebrand-banner{background:#172f37;color:#edf9f6;border-bottom:1px solid #b5d9aa55}
+.rebrand-banner[hidden]{display:none}
+.rebrand-banner-inner{display:flex;align-items:center;gap:16px;padding-block:12px;font-size:14px}
+.rebrand-banner p{flex:1;margin:0}
+.rebrand-banner a,.migration-link{text-decoration:underline;text-underline-offset:4px}
+.rebrand-banner a{display:inline-block;margin-left:8px;color:#ccebbf}
+.rebrand-banner button{flex-shrink:0;min-width:44px;min-height:44px;border-radius:8px;font-size:28px;cursor:pointer}
+.rebrand-banner button:hover{background:#ffffff18}
+.guide-header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;padding-block:30px}
+.header .brand{color:#fff}
+.guide{max-width:880px;padding-block:64px 88px}
+.guide h1{font-size:clamp(54px,9vw,84px)}
+.migration-page{--guide-accent:#b5d9aa;background:radial-gradient(ellipse at 85% 12%,#b5d9aa12,transparent 55%),#0a1018}
+.migration-page .guide h1 em,.migration-page .guide .eyebrow,.migration-page .guide-steps li::marker{color:var(--guide-accent)}
+.migration-page .guide .button.primary{background:#b5d9aa;border-color:#b5d9aa;color:#18251f}
+.migration-page .guide .button.primary:hover{background:#ccebbf;border-color:#ccebbf}
+.guide-intro{font-size:20px;line-height:1.7;max-width:700px;color:#cbd5df}
+.guide section{margin-top:48px}
+.guide h2{font-size:clamp(32px,5vw,44px);margin-bottom:20px;line-height:1.1}
+.guide p{margin-bottom:20px}
+.guide strong{font-weight:600}
+.address-examples{overflow-x:auto;border:1px solid #b5d9aa55;border-radius:14px;margin-block:24px;background:#16252c}
+.address-examples table{width:100%;text-align:left;border-collapse:collapse;font-size:15px}
+.address-examples th,.address-examples td{padding:18px 20px}
+.address-examples th{color:#b5d9aa;font-weight:600}
+.address-examples td{border-top:1px solid #b5d9aa33;white-space:nowrap}
+.address-examples a{color:#ccebbf;text-decoration:underline;text-underline-offset:4px}
+.guide-note{color:#bac8d3;font-size:14px}
+.guide code{overflow-wrap:anywhere}
+.guide-steps{list-style:decimal;padding-left:24px}
+.guide-steps li{padding-left:8px;margin-block:16px}
+@media(prefers-color-scheme:light){
+.rebrand-banner{background:#e8f1e4;color:#18251f;border-color:#385c3044}
+.rebrand-banner a{color:#385c30}
+.rebrand-banner button:hover{background:#385c3015}
+.migration-page{--guide-accent:#385c30;background:radial-gradient(ellipse at 85% 12%,#b5d9aa55,transparent 55%),#f4f7f5;color:#18251f}
+.migration-page .eyebrow,.guide-intro,.guide-note{color:#47594f}
+.migration-page .footer{background:#e8eee9;border-color:#385c3033}
+.address-examples{background:#fcfefb;border-color:#385c3044}
+.address-examples th,.address-examples a{color:#385c30}
+.address-examples td{border-color:#385c3033}
+.migration-page a:focus-visible,.migration-page button:focus-visible,.rebrand-banner a:focus-visible,.rebrand-banner button:focus-visible{outline-color:#385c30}
+}

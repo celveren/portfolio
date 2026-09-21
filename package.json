@@ -2,8 +2,10 @@
   "name": "celveren-portfolio",
   "private": true,
   "scripts": {
-    "build": "tailwindcss -i input.css -o styles.css --minify",
-    "watch": "tailwindcss -i input.css -o styles.css --watch"
+    "build": "node scripts/build-html.mjs && npm run build:css",
+    "watch": "node scripts/watch.mjs",
+    "build:css": "tailwindcss -i input.css -o styles.css --minify",
+    "test": "node --test scripts/tests/*.test.mjs"
   },
   "devDependencies": {
     "@tailwindcss/cli": "^4.3.3",
