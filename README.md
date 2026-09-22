@@ -23,11 +23,11 @@ npm ci
 npm run build
 ```
 
-Use `npm run watch` while editing to regenerate both shared headers and CSS. Page content lives in `index.html` and `tools-services.html`, styles in `input.css`, and small interactions in `script.js`. `styles.css` is generated; do not edit it directly.
+Use `npm run watch` while editing to regenerate both shared headers and CSS. Page content lives in `index.html`, `why-celveren.html`, and `tools-services.html`, styles in `input.css`, and small interactions in `script.js`. `styles.css` is generated; do not edit it directly.
 
 ## Shared navigation
 
-Edit `partials/header.html` to change the header, navigation links, or header social links across all deployed pages. `npm run build` fills the `shared:header` comment regions in `index.html`, `tools-services.html`, `migration/index.html`, `404.html`, and `previews/index.html` before compiling CSS. Commit the partial and regenerated pages together; edit page content outside these regions normally.
+Edit `partials/header.html` to change the header, navigation links, or header social links across all deployed pages. `npm run build` fills the `shared:header` comment regions in `index.html`, `why-celveren.html`, `tools-services.html`, `migration/index.html`, `404.html`, and `previews/index.html` before compiling CSS. Commit the partial and regenerated pages together; edit page content outside these regions normally.
 
 The two active-link placeholders are filled at build time. `script.js` updates the active link after hash navigation. Header links use root-relative URLs so nested pages share the same destinations, and the generated navigation works without JavaScript. Shared appearance lives in `input.css`.
 
@@ -75,7 +75,7 @@ Set `CELVEREN_PORT=8081` before either command to change the port. Stop Watch wi
 
 Before publishing, check mobile and desktop layouts in both themes, links, images, keyboard navigation, and reduced-motion behavior.
 
-Server setup and automatic deployment are documented in [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md). For a manual upload, include `index.html`, `tools-services.html`, `404.html`, `styles.css`, `script.js`, `daily-artwork.js`, `assets/`, and `migration/`.
+Server setup and automatic deployment are documented in [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md). For a manual upload, include `index.html`, `why-celveren.html`, `tools-services.html`, `404.html`, `styles.css`, `script.js`, `daily-artwork.js`, `assets/`, and `migration/`.
 
 Artwork sources and usage notes are in [docs/ASSETS.md](docs/ASSETS.md). No open-source license is currently assigned to this repository.
 

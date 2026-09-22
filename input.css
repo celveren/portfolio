@@ -1,5 +1,6 @@
 @import "tailwindcss" source(none);
 @source "./index.html";
+@source "./why-celveren.html";
 @source "./migration/index.html";
 @source "./404.html";
 @source "./tools-services.html";
@@ -258,3 +259,25 @@ background:radial-gradient(ellipse at 0 0,var(--project-tint),transparent 70%),l
 .address-examples td{border-color:#385c3033}
 .migration-page a:focus-visible,.migration-page button:focus-visible,.rebrand-banner a:focus-visible,.rebrand-banner button:focus-visible{outline-color:#385c30}
 }
+
+/* A quiet introduction and a comfortable reading width for the personal story. */
+.why-preview{padding:40px 0;background:#0a1018;color:#edf3f8;border-top:1px solid #ffffff14}
+.why-preview-inner{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.why-preview h2{margin:0 0 12px;font-size:36px}
+.why-preview .why-link{flex-shrink:0;margin-top:0}
+.why-preview p{max-width:580px;margin:0;color:#cbd5df;line-height:1.8}
+.why-link{display:inline-flex;align-items:center;gap:12px;min-height:44px;margin-top:12px;color:#bae6fd;text-decoration:underline;text-underline-offset:5px}
+.why-link:hover{color:#fff}
+.story-page{background:radial-gradient(ellipse at 90% 15%,#bae6fd0a,transparent 50%),#0a1018;color:#edf3f8}
+.story-main{padding-top:64px;padding-bottom:96px}
+.story-copy{max-width:680px;margin:0 auto}
+.story-copy h1{font-size:clamp(52px,8vw,80px);max-width:none;margin-bottom:40px}
+.story-copy p{margin:0 0 24px;font-size:17px;line-height:1.9;color:#cbd5df}
+.story-copy .story-lead{font-family:var(--font-display);font-size:30px;line-height:1.35;color:#edf3f8;margin-bottom:32px}
+@media(min-width:1024px){.story-copy{max-width:clamp(680px,70vw,1040px)}.story-copy p{font-size:18px}.story-copy .story-lead{font-size:34px}}
+@media(max-width:767px){.why-preview{padding:32px 0}.why-preview-inner{align-items:flex-start;flex-direction:column;gap:16px}.story-main{padding-top:48px;padding-bottom:64px}.story-copy p{font-size:16px}.story-copy .story-lead{font-size:28px}}
+
+.story-symbol{display:grid;grid-template-columns:minmax(0,1fr) 200px;align-items:start;gap:40px;margin:8px 0 24px}
+.story-symbol p:last-child{margin-bottom:0}
+.story-logo{display:block;width:100%;height:auto;border-radius:16px}
+@media(max-width:767px){.story-symbol{grid-template-columns:minmax(0,1fr) 88px;gap:16px}.story-logo{border-radius:8px}}

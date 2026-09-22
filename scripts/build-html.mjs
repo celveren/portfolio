@@ -3,7 +3,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { resolve } from 'node:path';
 
 export const siteRoot = fileURLToPath(new URL('../', import.meta.url));
-export const pages = ['index.html', 'tools-services.html', 'migration/index.html', '404.html', 'previews/index.html'];
+export const pages = ['index.html', 'why-celveren.html', 'tools-services.html', 'migration/index.html', '404.html', 'previews/index.html'];
 
 export function renderHeader(source, partial, page) {
     const region = /^( *)<!-- shared:header:start -->\n[\s\S]*?^\1<!-- shared:header:end -->/gm;
