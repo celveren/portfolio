@@ -6,6 +6,7 @@
             ['assets/hero-reference.png', 'assets/footer-reference.png'],
             ['assets/stellar-blade-hero.png', 'assets/stellar-blade-landscape.png'],
             ['assets/fall-white-protag.png', 'assets/fall-landscape.png'],
+            ['assets/night-sky.png', 'assets/night-sky.png'],
         ];
 
         function updateArtwork() {
