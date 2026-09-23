@@ -28,9 +28,11 @@ When in doubt of new changes that stray outside of the brand (BRAND.md), ask bef
 
 When making changes to the footer or the navigation, be sure to update the corresponding item through all the .html pages that are served.
 
-## Docker Guide
+## Docker and/or Deployment Guide
 
 When adding new files that serve website files or assets, make the necessary changes to the Docker files (`Dockerfile`, `.dockerignore`, `docker-compose.yaml`) to ensure the Docker setup stays updated.
+
+When adding new files that serve website files or assets, also make the necessary changes to the deployment setup.
 
 ## Plan Execution
 
