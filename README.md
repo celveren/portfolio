@@ -1,6 +1,6 @@
 # Célveren portfolio
 
-My developer portfolio — a place to share what I’m building and working on next.
+My Software Developer portfolio — a place to share what I’m building and working on next.
 
 Currently featuring Lightning, Adamel, and UDB-API. Built with HTML, Tailwind CSS, and JavaScript, with support for light and dark mode.
 
