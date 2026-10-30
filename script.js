@@ -10,7 +10,6 @@ artSparkles.forEach((sparkle, index) => {
 
 const sayings = [
     "You know what, I am now French.",
-    "Periodt",
     "My superpower is getting people to laugh.",
     "I do have a pretty sunny disposition!",
     "I still think about the people that said I had leader qualities. I keep proving that to myself every time",
@@ -65,4 +64,8 @@ document.getElementById('dismiss-rebrand')?.addEventListener('click', () => {
         // Without storage, dismissal lasts for this page view.
     }
     document.querySelector('.site-shell header .brand')?.focus();
+});
+
+document.getElementById('dismiss-glitter')?.addEventListener('click', () => {
+    document.getElementById('glitter-banner').hidden = true;
 });
